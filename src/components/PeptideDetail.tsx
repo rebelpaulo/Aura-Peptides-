@@ -49,7 +49,7 @@ export default function PeptideDetail() {
         <h2 className="text-2xl font-bold text-slate-900 mb-2">Erro ao carregar</h2>
         <p className="text-slate-500 mb-6">{error || 'Peptídeo não encontrado'}</p>
         <Link to="/" className="text-blue-600 font-bold hover:underline inline-flex items-center gap-2">
-          <ArrowLeft size={18} /> Voltar para a loja
+          <ArrowLeft size={18} /> Voltar para o catálogo
         </Link>
       </div>
     );
@@ -76,7 +76,7 @@ export default function PeptideDetail() {
       <aside className="hidden lg:block w-72 shrink-0">
         <div className="sticky top-28 space-y-4">
           <Link to="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 font-medium transition-colors mb-4">
-            <ArrowLeft size={18} /> Voltar para a loja
+            <ArrowLeft size={18} /> Voltar para o catálogo
           </Link>
           <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
             <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
@@ -105,7 +105,7 @@ export default function PeptideDetail() {
         className="flex-1 space-y-8"
       >
         <Link to="/" className="lg:hidden inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 font-medium transition-colors">
-          <ArrowLeft size={18} /> Voltar para a loja
+          <ArrowLeft size={18} /> Voltar para o catálogo
         </Link>
 
         {/* Header Card */}

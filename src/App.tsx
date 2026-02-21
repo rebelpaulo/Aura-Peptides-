@@ -15,7 +15,7 @@ export default function App() {
   const location = useLocation();
 
   const tabs = [
-    { id: 'shop', label: 'Peptidos', icon: FlaskConical, path: '/' },
+    { id: 'peptides', label: 'Peptidos', icon: FlaskConical, path: '/' },
     { id: 'calculator', label: 'Calculadora', icon: CalcIcon, path: '/calculator' },
     { id: 'studies', label: 'Literatura Clínica', icon: BookOpen, path: '/studies' },
   ] as const;

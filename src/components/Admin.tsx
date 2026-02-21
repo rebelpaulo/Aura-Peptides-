@@ -29,7 +29,7 @@ export default function Admin({ peptides, onUpdate }: AdminProps) {
       protocol: '',
       halfLife: '',
       image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800',
-      supplierLink: 'https://researchpeptideseurope.com/',
+      supplierLink: 'https://peptidedosages.com/',
       dosingReconstitutionGuide: '',
       suppliesNeeded: '',
       protocolOverview: '',
@@ -113,7 +113,7 @@ export default function Admin({ peptides, onUpdate }: AdminProps) {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold text-slate-900">Gerenciamento de Peptídeos</h1>
-          <p className="text-slate-500">Adicione, edite ou remova peptídeos do catálogo.</p>
+          <p className="text-slate-500">Adicione, edite ou remova peptídeos da base de conhecimento.</p>
         </div>
         <button 
           onClick={handleNew}
