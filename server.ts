@@ -1,11 +1,18 @@
-// Aura Peptides Server - Updated
+// Aura Peptides Server - v2
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import Database from "better-sqlite3";
 import cors from "cors";
 import { GoogleGenAI, Type } from "@google/genai";
+import fs from "fs";
 
-const db = new Database("peptides.db");
+// Delete existing database to ensure fresh state
+const dbPath = "peptides.db";
+if (fs.existsSync(dbPath)) {
+  fs.unlinkSync(dbPath);
+}
+
+const db = new Database(dbPath);
 
 // Initialize DB
 db.exec(`
@@ -446,7 +453,7 @@ if (count.count === 0) {
     category: "Longevidade & Anti-aging",
     description: "Versão de ação prolongada do CJC-1295 que mantém níveis elevados de GH por períodos extensos.",
     standardDosage: "2mg por semana",
-    protocol: "Injeção subcutânea uma vez por semana.",
+    protocol: "Injeção subcut��nea uma vez por semana.",
     halfLife: "6-8 dias",
     image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800",
     supplierLink: "https://researchpeptideseurope.com/product/cjc-1295-with-dac-5mg-2/",
