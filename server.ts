@@ -1,4 +1,4 @@
-// Aura Peptides Server v5 - Clean rebuild
+// Aura Peptides Server v6 - Force Restart
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import Database from "better-sqlite3";
@@ -6,7 +6,7 @@ import cors from "cors";
 import { GoogleGenAI, Type } from "@google/genai";
 import fs from "fs";
 
-console.log("Starting Aura Peptides Server v5...");
+console.log("[v0] Starting Aura Peptides Server v6...");
 
 // Delete existing database to ensure fresh state
 const dbPath = "peptides.db";
