@@ -242,6 +242,7 @@ if (count.count === 0) {
     halfLife: "7-15 dias",
     image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=800",
     supplierLink: "https://researchpeptideseurope.com/product/tb-500-5mg/",
+    dosingReconstitutionGuide: "### Guia de Reconstituição\nAdicione 2.0 mL de água bacteriostática para uma concentração de 2.5 mg/mL.",
     suppliesNeeded: "- Frasco TB-500 (5mg)\n- Seringas de Insulina\n- Água Bacteriostática",
     protocolOverview: "Focado na reparação de tecidos moles (músculos, tendões, ligamentos) e redução de fibrose.",
     dosingProtocol: "Fase de carga: 5mg/semana por 4 semanas. Manutenção: 2mg/semana por 4-8 semanas.",
