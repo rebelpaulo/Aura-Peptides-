@@ -4,6 +4,8 @@ import Database from "better-sqlite3";
 import cors from "cors";
 import { GoogleGenAI, Type } from "@google/genai";
 
+console.log("[v0] Server starting...");
+
 const db = new Database("peptides.db");
 
 // Initialize DB
