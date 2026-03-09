@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { FlaskConical, Calculator as CalcIcon, BookOpen, Menu, X, Activity, Settings } from 'lucide-react';
+import { FlaskConical, Calculator as CalcIcon, BookOpen, Menu, X, Activity, Settings, AlertCircle, RefreshCw } from 'lucide-react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import PeptideList from './components/PeptideList';
 import Calculator from './components/Calculator';
@@ -15,7 +15,7 @@ export default function App() {
   const location = useLocation();
 
   const tabs = [
-    { id: 'peptides', label: 'Peptidos', icon: FlaskConical, path: '/' },
+    { id: 'peptides', label: 'Peptídeos', icon: FlaskConical, path: '/' },
     { id: 'calculator', label: 'Calculadora', icon: CalcIcon, path: '/calculator' },
     { id: 'studies', label: 'Literatura Clínica', icon: BookOpen, path: '/studies' },
   ] as const;
@@ -182,10 +182,29 @@ export default function App() {
         </div>
       )}
 
+      {/* Error Banner */}
+      {error && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30 -mt-6 mb-6">
+          <div className="bg-red-50 border border-red-200 rounded-2xl p-4 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3 text-red-700">
+              <AlertCircle size={20} />
+              <span className="font-medium">Erro ao carregar dados: {error}</span>
+            </div>
+            <button 
+              onClick={refetch}
+              className="flex items-center gap-2 px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg font-medium transition-colors"
+            >
+              <RefreshCw size={16} />
+              Tentar novamente
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Main Content */}
       <main className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 pb-24 ${isAdmin ? 'pt-8' : '-mt-12'}`}>
         <Routes>
-          <Route path="/" element={<PeptideList peptides={peptides} />} />
+          <Route path="/" element={<PeptideList peptides={peptides} loading={loading} />} />
           <Route path="/calculator" element={<Calculator peptides={peptides} />} />
           <Route path="/studies" element={<Studies />} />
           <Route path="/peptide/:id" element={<PeptideDetail />} />

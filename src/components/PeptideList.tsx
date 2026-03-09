@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Search, Clock, Syringe, Activity, ChevronRight } from 'lucide-react';
+import { Search, Clock, Activity, ChevronRight, FlaskConical } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Peptide } from '../hooks/usePeptides';
 
 interface PeptideListProps {
   peptides: Peptide[];
+  loading?: boolean;
 }
 
-export default function PeptideList({ peptides }: PeptideListProps) {
+export default function PeptideList({ peptides, loading }: PeptideListProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | 'Todos'>('Todos');
 
@@ -19,6 +20,31 @@ export default function PeptideList({ peptides }: PeptideListProps) {
     const matchesCategory = selectedCategory === 'Todos' || p.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
+
+  // Loading skeleton
+  if (loading) {
+    return (
+      <div className="space-y-8">
+        <div className="bg-white p-2 rounded-2xl shadow-sm border border-slate-200/60 h-16 animate-pulse" />
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {[1, 2, 3, 4, 5, 6].map(i => (
+            <div key={i} className="bg-white rounded-2xl shadow-sm border border-slate-200/60 overflow-hidden">
+              <div className="h-48 bg-slate-100 animate-pulse" />
+              <div className="p-6 space-y-4">
+                <div className="h-6 bg-slate-100 rounded animate-pulse w-3/4" />
+                <div className="h-4 bg-slate-100 rounded animate-pulse" />
+                <div className="h-4 bg-slate-100 rounded animate-pulse w-1/2" />
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="h-16 bg-slate-50 rounded-xl animate-pulse" />
+                  <div className="h-16 bg-slate-50 rounded-xl animate-pulse" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
@@ -109,13 +135,26 @@ export default function PeptideList({ peptides }: PeptideListProps) {
           </Link>
         ))}
         
-        {filteredPeptides.length === 0 && (
+        {filteredPeptides.length === 0 && peptides.length > 0 && (
           <div className="col-span-full py-20 text-center">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-100 text-slate-400 mb-4">
               <Search size={24} />
             </div>
             <h3 className="text-lg font-semibold text-slate-900 mb-1">Nenhum resultado encontrado</h3>
             <p className="text-slate-500">Tente ajustar seus termos de busca ou filtros de categoria.</p>
+          </div>
+        )}
+        
+        {peptides.length === 0 && !loading && (
+          <div className="col-span-full py-20 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-4">
+              <FlaskConical size={24} />
+            </div>
+            <h3 className="text-lg font-semibold text-slate-900 mb-1">Nenhum peptídeo cadastrado</h3>
+            <p className="text-slate-500 mb-4">Comece adicionando peptídeos pelo painel de administração.</p>
+            <a href="/admin" className="inline-flex items-center gap-2 text-blue-600 font-medium hover:underline">
+              Ir para o Backoffice <ChevronRight size={16} />
+            </a>
           </div>
         )}
       </div>
